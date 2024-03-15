@@ -69,6 +69,11 @@ const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let doc;
+    // Check if any of the fields are empty
+    if (toform.value.trim() === '' || details.value.trim() === '' || amount.value.trim() === '') {
+        alert("Please fill in all fields.");
+        return; // Exit the function early to prevent form submission
+    }
     if (type.value === 'invoice') {
         doc = new Invoice(toform === null || toform === void 0 ? void 0 : toform.value, details === null || details === void 0 ? void 0 : details.value, amount === null || amount === void 0 ? void 0 : amount.valueAsNumber);
     }

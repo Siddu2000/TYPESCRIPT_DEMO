@@ -88,6 +88,13 @@ const list = new ListTemplate(ul);
 form.addEventListener('submit',(e:Event)=>{
     e.preventDefault();
     let doc: HasFormatter;
+             // Check if any of the fields are empty
+    if (toform.value.trim() === '' || details.value.trim() === '' || amount.value.trim() === '') {
+      alert("Please fill in all fields.");
+      return; // Exit the function early to prevent form submission
+  }
+
+    
     if (type.value === 'invoice') {
       doc = new Invoice(toform?.value, details?.value, amount?.valueAsNumber);
     } else {
